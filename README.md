@@ -1,2 +1,2 @@
-BMotionStudio_Tutorial
-======================
+BMotionStudio 2 Tutorial
+========================
