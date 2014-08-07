@@ -86,8 +86,8 @@ The third method can apply so called _Transformers_. A Transformer allows the us
 ```groovy
 // Select elements with ids "circle1" and "rectangle1" and set their fill and stroke attributes
 def t = transform("#circle1,#rectangle1") {
-set "fill", "red"
-set "stroke", "gray"
+  set "fill", "red"
+  set "stroke", "gray"
 }
 // Apply transformer to visualization
 bms.apply(t)
