@@ -19,7 +19,7 @@ Thats all! Your default browser should open with the lift visualisation running.
 
 Try out the build-in graphical editor by clicking on the "Start Editor" button located at the top right corner.
 
-## Create your own visualisation
+## Getting Started
 
 You can use the default template (located in the template folder) as a starting point to create your own visualisation. The folder contains three files:
 
@@ -29,6 +29,8 @@ You can use the default template (located in the template folder) as a starting 
 
 ## Scripting
 
+This is the most important part in your script file:
+
 ```groovy
 bms.registerGroovyObserver(
 	[
@@ -37,4 +39,35 @@ bms.registerGroovyObserver(
 		}
 	] as IBMotionGroovyObserver
 )
+```
+
+The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and send updates to the visualisation.
+
+### Evaluating Expressions and Predicates
+
+In order to evaluate expressions and predicates you can use the _eval_ method provided by the BMotion Studio API:
+```groovy
+def result = bms.eval("card(call_buttons")
+```
+
+### Send Updates to the Visualisation
+
+BMotion Studio provides several methods to send updates to the visualisation. You can evaluate any JavaScript code snippet as string:
+
+```groovy
+bms.callJs('\$("#mycircle").attr("fill","blue")')
+```
+
+You can send any JSON object to the visualisation:
+
+```groovy
+def json = [result : bms.eval("card(call_buttons")]
+bms.toGui("bms.doSomethingWithJson", json)
+```
+Using this method you have to create a corresponding JavaScript mehtod which handles the JSON data. For instance:
+
+```javascript
+bms.doSomethingWithJson = function(data) {
+  console.log(data)
+}
 ```
