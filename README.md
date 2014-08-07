@@ -81,7 +81,7 @@ Using this method you have to create a corresponding JavaScript method which han
 
 ```javascript
 bms.doSomethingWithJson = function(data) {
-  console.log("The result of the expression " + data.exp + " + " is " + data.result)
+  console.log("The result of the expression " + data.exp + " is " + data.result)
 }
 ```
 
