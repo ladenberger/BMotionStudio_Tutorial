@@ -27,9 +27,15 @@ You can use the default template (located in the template folder) as a starting 
 * observers.json: Contains the observers in JSON format that are created by the editor.
 * script.groovy: This file is needed if you want to script your visualisation. With this file you can access the entire ProB 2 API and send updates to the visualisation.
 
+## Build-in Graphical Editor
+
+tbd
+
 ## Scripting
 
-This is the most important part in your script file:
+Sometimes the build-in graphical editor is insufficient for creating a visualisation. This is the case for more complex visualisations, like interlocking systems and dynamic visualisations. For this reason, BMotion Studio provides a way to script your visualisation. Note that it is possible to mix observers created with the build-in graphical editor and scripting.
+
+Open the _script.groovy_ file and take a look at the _update_ function:
 
 ```groovy
 bms.registerGroovyObserver(
@@ -41,7 +47,7 @@ bms.registerGroovyObserver(
 )
 ```
 
-The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and send updates to the visualisation.
+The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and send updates to the visualisation. Any code in the __update__ function will be called whenever the model changes in state. Of course you can use the entire function and feature range of Groovy.
 
 ### Evaluating Expressions and Predicates
 
@@ -52,22 +58,34 @@ def result = bms.eval("card(call_buttons")
 
 ### Send Updates to the Visualisation
 
-BMotion Studio provides several methods to send updates to the visualisation. You can evaluate any JavaScript code snippet as string:
+The BMotion Studio API provides some methods to send updates to the visualisation. The first method can evaluate any JavaScript code snippet given as a string:
 
 ```groovy
 bms.callJs('\$("#mycircle").attr("fill","blue")')
 ```
 
-You can send any JSON object to the visualisation:
+The second method can send any JSON object to the visualisation:
 
 ```groovy
 def json = [result : bms.eval("card(call_buttons")]
 bms.toGui("bms.doSomethingWithJson", json)
 ```
-Using this method you have to create a corresponding JavaScript mehtod which handles the JSON data. For instance:
+Using this method you have to create a corresponding JavaScript method which handles the JSON data. For instance:
 
 ```javascript
 bms.doSomethingWithJson = function(data) {
   console.log(data)
 }
+```
+
+The third method can apply so called _Transformers_. A Transformer allows the user to manipulate the DOM of the visualization. Transformer follows the [jQuery selector syntax](http://api.jquery.com/category/selectors).
+
+```groovy
+// Select elements with ids "circle1" and "rectangle1" and set their fill and stroke attributes
+def t = transform("#circle1,#rectangle1") {
+set "fill", "red"
+set "stroke", "gray"
+}
+// Apply transformer to visualization
+bms.apply(t)
 ```
