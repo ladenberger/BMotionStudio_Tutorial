@@ -25,7 +25,7 @@ You can use the default template (located in the template folder) as a starting 
 
 * template.html: The actual template file that contains your visualisation. You can use any HTML, SVG, CSS, JavaScript ... The default template file contains an empty SVG graphics that can be opened and edited with the build-in graphical editor.
 * observers.json: Contains the observers in JSON format that are created by the editor.
-* script.groovy: This file is needed if you want to script your visualisation. With this file you can access the entire ProB 2 API and send updates to the visualisation.
+* script.groovy: This file is needed if you want to script your visualisation. With this file you can access the entire [ProB 2 API](http://nightly.cobra.cs.uni-duesseldorf.de/prob2/developer-documentation/prob-devel.pdf) and send updates to the visualisation.
 
 ## Build-in Graphical Editor
 
