@@ -61,13 +61,16 @@ def result = bms.eval("card(call_buttons")
 The BMotion Studio API provides some methods to send updates to the visualisation. The first method can evaluate any JavaScript code snippet given as a string:
 
 ```groovy
+// Apply any JavaScript to visualisation
 bms.apply('\$("#mycircle").attr("fill","blue")')
 ```
 
 The second method can send any JSON object to the visualisation:
 
 ```groovy
+// Create a JSON object
 def json = [result : bms.eval("card(call_buttons")]
+// Call JavaScript function bms.doSomethingWithJson with JSON object
 bms.apply("bms.doSomethingWithJson", json)
 ```
 Using this method you have to create a corresponding JavaScript method which handles the JSON data. For instance:
