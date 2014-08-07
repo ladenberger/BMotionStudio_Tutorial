@@ -72,7 +72,8 @@ The second method can send any JSON object to the visualisation:
 
 ```groovy
 // Create a JSON object
-def json = [result : bms.eval("card(call_buttons")]
+def myexpression = "card(call_buttons)"
+def json = [result : bms.eval(myexpression), exp : myexpression]
 // Call JavaScript function bms.doSomethingWithJson with JSON object
 bms.apply("bms.doSomethingWithJson", json)
 ```
@@ -80,7 +81,7 @@ Using this method you have to create a corresponding JavaScript method which han
 
 ```javascript
 bms.doSomethingWithJson = function(data) {
-  console.log(data)
+  console.log("The result of the expression " + data.exp + " + " is " + data.result)
 }
 ```
 
