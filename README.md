@@ -16,3 +16,11 @@ BMotion Studio 2 is a visual editor for creating domain specific visualisations 
 ```
 
 Thats all! Your default browser should open with the lift visualisation running.
+
+## Create your own visualisation
+
+You can use the default template (located in the template folder) as a starting point to create your own visualisation. The folder contains three files:
+
+* template.html: The actual template file that contains your visualisation. You can use any HTML, SVG, CSS, JavaScript ... The default template file contains an empty SVG graphics that can be opened and edited with the build-in graphical editor.
+* observers.json: Contains the observers in JSON format that are created by the editor.
+* script.groovy: This file is needed if you want to script your visualisation. With this file you can access the entire ProB 2 API and send updates to the visualisation.
