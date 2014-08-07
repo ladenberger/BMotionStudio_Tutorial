@@ -56,6 +56,8 @@ In order to evaluate expressions and predicates you can use the _eval_ method pr
 def result = bms.eval("card(call_buttons)")
 ```
 
+This example evaluates the expression _card(call_buttons)_ in the current state of the model. The result is saved in the variable _result_.
+
 ### Send Updates to the Visualisation
 
 The BMotion Studio API provides some methods to send updates to the visualisation. The first method can evaluate any JavaScript code snippet given as a string:
