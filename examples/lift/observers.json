@@ -1,0 +1,154 @@
+{
+  "observers": [
+    {
+      "type": "BAnimation",
+      "objs": [
+        {
+          "selector": "#txt_cur_floor",
+          "bindings": [
+            {
+              "type": "expression",
+              "formula": "cur_floor",
+              "actions": [
+                {
+                  "attr": "text",
+                  "value": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "selector": "#door",
+          "bindings": [
+            {
+              "type": "predicate",
+              "formula": "door_open = TRUE",
+              "actions": [
+                {
+                  "attr": "fill",
+                  "value": "white"
+                }
+              ]
+            },
+            {
+              "type": "predicate",
+              "formula": "door_open = FALSE",
+              "actions": [
+                {
+                  "attr": "fill",
+                  "value": "lightgray"
+                }
+              ]
+            },
+            {
+              "type": "predicate",
+              "formula": "cur_floor = 1",
+              "actions": [
+                {
+                  "attr": "y",
+                  "value": "60"
+                }
+              ]
+            },
+            {
+              "type": "predicate",
+              "formula": "cur_floor = 0",
+              "actions": [
+                {
+                  "attr": "y",
+                  "value": "175"
+                }
+              ]
+            },
+            {
+              "type": "predicate",
+              "formula": "cur_floor = -1",
+              "actions": [
+                {
+                  "attr": "y",
+                  "value": "275"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "selector": "#txt_floor1",
+          "bindings": [
+            {
+              "type": "predicate",
+              "formula": "cur_floor = 1",
+              "actions": [
+                {
+                  "attr": "font-weight",
+                  "value": "bold"
+                }
+              ]
+            },
+            {
+              "type": "predicate",
+              "formula": "cur_floor /= 1",
+              "actions": [
+                {
+                  "attr": "font-weight",
+                  "value": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "selector": "#txt_floor0",
+          "bindings": [
+            {
+              "type": "predicate",
+              "formula": "cur_floor = 0",
+              "actions": [
+                {
+                  "attr": "font-weight",
+                  "value": "bold"
+                }
+              ]
+            },
+            {
+              "type": "predicate",
+              "formula": "cur_floor /= 0",
+              "actions": [
+                {
+                  "attr": "font-weight",
+                  "value": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "selector": "#txt_floor-1",
+          "bindings": [
+            {
+              "type": "predicate",
+              "formula": "cur_floor = -1",
+              "actions": [
+                {
+                  "attr": "font-weight",
+                  "value": "bold"
+                }
+              ]
+            },
+            {
+              "type": "predicate",
+              "formula": "cur_floor /= -1",
+              "actions": [
+                {
+                  "attr": "font-weight",
+                  "value": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

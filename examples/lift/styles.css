@@ -1,0 +1,15 @@
+.door_false {
+  fill: lightgray;
+}
+
+.door_true {
+  fill: white; 
+}
+
+.txt_true {
+	font-weight: bold;
+}
+
+.txt_false {
+	font-weight: normal;
+}
