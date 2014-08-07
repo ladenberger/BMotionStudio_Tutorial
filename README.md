@@ -53,6 +53,7 @@ The _update_ function is called whenever the model changes in state. Here is the
 
 In order to evaluate expressions and predicates you can use the _eval_ method provided by the BMotion Studio API:
 ```groovy
+// Evaluate expression card(call_buttons)
 def result = bms.eval("card(call_buttons)")
 ```
 
