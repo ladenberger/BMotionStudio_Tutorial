@@ -27,4 +27,14 @@ You can use the default template (located in the template folder) as a starting 
 * observers.json: Contains the observers in JSON format that are created by the editor.
 * script.groovy: This file is needed if you want to script your visualisation. With this file you can access the entire ProB 2 API and send updates to the visualisation.
 
+## Scripting
 
+```groovy
+bms.registerGroovyObserver(
+	[
+		update: { ITool tool ->
+			return
+		}
+	] as IBMotionGroovyObserver
+)
+```
