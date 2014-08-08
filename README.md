@@ -48,7 +48,11 @@ bms.registerGroovyObserver(
 )
 ```
 
-The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and send updates to the visualisation. Any code in the __update__ function will be called whenever the model changes in state. Of course you can use the entire function and feature range of Groovy.
+The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and to send updates to the visualisation. Any code in the __update__ function will be called whenever the model changes in state. The _tool_ argument is the access point to the running model. Every supported formal language has its own _ITool_ implementation. For instance, in case of an Event-B and Classical-B model you can access the Trace with _tool.getTrace()_.
+
+
+
+Of course you can use the entire function and feature range of Groovy.
 
 ### Evaluating Expressions and Predicates
 
