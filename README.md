@@ -41,6 +41,7 @@ Open the _script.groovy_ file and take a look at the _update_ function:
 bms.registerGroovyObserver(
 	[
 		update: { ITool tool ->
+			// Do something ...
 			return
 		}
 	] as IBMotionGroovyObserver
@@ -75,12 +76,12 @@ The second method can send any JSON object to the visualisation:
 def myexpression = "card(call_buttons)"
 def json = [result : bms.eval(myexpression), exp : myexpression]
 // Call JavaScript function bms.doSomethingWithJson with JSON object
-bms.apply("bms.doSomethingWithJson", json)
+bms.apply("doSomethingWithJson", json)
 ```
-Using this method you have to create a corresponding JavaScript method which handles the JSON data. For instance:
+Using this method you have to create a corresponding JavaScript method in your template (either inline or in a referenced JavaScript file) which handles the JSON data. For instance:
 
 ```javascript
-bms.doSomethingWithJson = function(data) {
+function doSomethingWithJson(data) {
   console.log("The result of the expression " + data.exp + " is " + data.result)
 }
 ```
