@@ -48,7 +48,7 @@ bms.registerGroovyObserver(
 )
 ```
 
-The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and to send updates to the visualisation. Any code in the __update__ function will be called whenever the model changes in state. The _tool_ argument is the access point to the running model. Every supported formal language has its own _ITool_ implementation. For instance, in case of an Event-B and Classical-B model you can access the Trace with _tool.getTrace()_.
+The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and to send updates to the visualisation. Any code in the _update_ function will be called whenever the model changes in state. The _tool_ argument is the access point to the running model. Every supported formal language has its own _ITool_ implementation. For instance, in case of an Event-B and Classical-B model you can access the Trace with _tool.getTrace()_.
 
 Of course you can use the entire function and feature range of Groovy.
 
@@ -56,10 +56,28 @@ Of course you can use the entire function and feature range of Groovy.
 
 In order to evaluate expressions and predicates you can use the _eval_ method provided by the BMotion Studio API:
 ```groovy
-// Evaluate expression card(call_buttons)
-def result = bms.eval("card(call_buttons)")
+// Evaluate expression card({1,2,3,4})
+def res1 = bms.eval("card({1,2,3,4})")
+
+assert res1 == "4"
 ```
-This example evaluates the expression _card(call_buttons)_ in the current state of the model. The result is saved in the variable _result_.
+This example evaluates the expression _card(call_buttons)_ in the current state of the model. The result is of the type _EvalResult_. _EvalResult_ is a special class created to make dealing with the evaluated result much easier.
+
+Every _EvalResult_ also has a method which allows for the easy translation of the String representation to be translated into a corresponding Java object (i.e. "1" will be translated as the integer object 1).
+
+Here is an example:
+
+```groovy
+def res1 = bms.eval("card({1,2,3,4})")
+def trans2 = res1.translate(tool.getStateSpace())
+
+assert trans2 == 4
+
+def res2 = bms.eval("2 < 4")
+def trans2 = res2.translate(tool.getStateSpace())
+
+assert trans2 == true
+```
 
 ### Send Updates to the Visualisation
 
