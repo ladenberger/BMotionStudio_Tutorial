@@ -81,7 +81,7 @@ It is also possible to harness the power of the Groovy closure in order to creat
 
 ```groovy
 // Create a closure that can be parameterized
-colorize = { selection, color ->
+def colorize = { selection, color ->
   transform(selection) {
     set "fill", color
   }
