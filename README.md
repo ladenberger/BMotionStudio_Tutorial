@@ -65,7 +65,7 @@ This example evaluates the expression _card(call_buttons)_ in the current state 
 
 The BMotion Studio API provides some methods to apply modifications on the visualisation. 
 
-The first method can apply so called _Transformers_ on the visualisation [1]. A Transformer allows the user to manipulate the DOM of the visualization. They follow the [jQuery selector syntax](http://api.jquery.com/category/selectors). Hower, we decided to lift the functionality of the jQuery selector syntax to the groovy scripting level.
+The first method can apply so called _Transformers_ on the visualisation [1]. A transformer allows the user to manipulate the DOM of the visualization. A transformer follows the [jQuery selector syntax](http://api.jquery.com/category/selectors). Hower, we decided to lift the functionality of the jQuery selector syntax to the groovy scripting level.
 
 ```groovy
 // Select elements with ids "circle1" and "rectangle1" and set their fill and stroke attributes
@@ -77,7 +77,7 @@ def t = transform("#circle1,#rectangle1") {
 bms.apply(t)
 ```
 
-It is also possible to harness the power of the Groovy closure in order to create a Transformer that can be parameterized:
+It is also possible to harness the power of the Groovy closure in order to create a transformer that can be parameterized:
 
 ```groovy
 // Create a closure that can be parameterized
