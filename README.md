@@ -77,6 +77,19 @@ def t = transform("#circle1,#rectangle1") {
 bms.apply(t)
 ```
 
+It is also possible to harness the power of the Groovy closure in order to create a Transformer that can be parameterized:
+
+```groovy
+// Create a closure that can be parameterized
+colorize = { selection, color ->
+  transform(selection) {
+    set "fill", color
+  }
+}
+// Color elements "sroot" and "s1" green
+bms.apply(colorize("#sroot,#s1", "green"))
+```
+
 The next method calls a defined JavaScript method which is defined in your template passing any JSON object:
 
 ```groovy
