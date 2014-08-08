@@ -59,7 +59,7 @@ In order to evaluate expressions and predicates you can use the _eval_ method pr
 // Evaluate expression card({1,2,3,4})
 def res1 = bms.eval("card({1,2,3,4})")
 
-assert res1 == "4"
+assert res1.value == "4"
 ```
 This example evaluates the expression _card(call_buttons)_ in the current state of the model. The result is of the type _EvalResult_. _EvalResult_ is a special class created to make dealing with the evaluated result much easier.
 
@@ -112,8 +112,8 @@ The next method calls a defined JavaScript method which is defined in your templ
 
 ```groovy
 // Create a JSON object
-def myexpression = "card(call_buttons)"
-def json = [result : bms.eval(myexpression), exp : myexpression]
+def res = bms.eval("card(call_buttons)")
+def json = [result : rest.value, exp : "card(call_buttons)"]
 // Call JavaScript function doSomethingWithJson with the created JSON object
 bms.apply("doSomethingWithJson", json)
 ```
