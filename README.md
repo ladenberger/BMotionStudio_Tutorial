@@ -71,12 +71,12 @@ Here is an example:
 def res1 = bms.eval("card({1,2,3,4})")
 def trans2 = res1.translate(tool.getStateSpace())
 
-assert trans2 == 4
+assert trans2.value == 4
 
 def res2 = bms.eval("2 < 4")
 def trans2 = res2.translate(tool.getStateSpace())
 
-assert trans2 == true
+assert trans2.value == true
 ```
 
 ### Send Updates to the Visualisation
