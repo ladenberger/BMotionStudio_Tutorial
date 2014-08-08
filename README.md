@@ -101,8 +101,8 @@ The last method applies a JavaScript code snippet given as a string on the visua
 // Apply any JavaScript to visualisation
 bms.apply('\$("#circle1").attr("fill","blue")')
 ```
-The JavaScript code snippet selects an element with the id "circle1" and sets its "fill" attribute to the color "blue" (See [2]).
+The JavaScript code snippet selects an element with the id "circle1" and sets its "fill" attribute to the color "blue" (See [jQuery selector syntax](http://api.jquery.com/category/selectors) for more details).
 
-References:
+### References
 [1] [Data Visualization in ProB, Joy Clark, 2013 (Bachelor Thesis)](http://www.stups.hhu.de/w/Data_Visualization_in_ProB)
 
