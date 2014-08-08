@@ -50,8 +50,6 @@ bms.registerGroovyObserver(
 
 The _update_ function is called whenever the model changes in state. Here is the starting point to interact with the model and to send updates to the visualisation. Any code in the __update__ function will be called whenever the model changes in state. The _tool_ argument is the access point to the running model. Every supported formal language has its own _ITool_ implementation. For instance, in case of an Event-B and Classical-B model you can access the Trace with _tool.getTrace()_.
 
-
-
 Of course you can use the entire function and feature range of Groovy.
 
 ### Evaluating Expressions and Predicates
@@ -61,36 +59,31 @@ In order to evaluate expressions and predicates you can use the _eval_ method pr
 // Evaluate expression card(call_buttons)
 def result = bms.eval("card(call_buttons)")
 ```
-
 This example evaluates the expression _card(call_buttons)_ in the current state of the model. The result is saved in the variable _result_.
 
 ### Send Updates to the Visualisation
 
-The BMotion Studio API provides some methods to send updates to the visualisation. The first method can evaluate any JavaScript code snippet given as a string:
+The BMotion Studio API provides some methods to apply modifications on the visualisation. 
 
-```groovy
-// Apply any JavaScript to visualisation
-bms.apply('\$("#mycircle").attr("fill","blue")')
-```
-
-The second method can send any JSON object to the visualisation:
+The following method calls a defined JavaScript method which is defined in your template passing any JSON object:
 
 ```groovy
 // Create a JSON object
 def myexpression = "card(call_buttons)"
 def json = [result : bms.eval(myexpression), exp : myexpression]
-// Call JavaScript function bms.doSomethingWithJson with JSON object
+// Call JavaScript function doSomethingWithJson with the created JSON object
 bms.apply("doSomethingWithJson", json)
 ```
-Using this method you have to create a corresponding JavaScript method in your template (either inline or in a referenced JavaScript file) which handles the JSON data. For instance:
+
+You have to create a corresponding JavaScript method in your template (either inline or in a referenced JavaScript file), for instance:
 
 ```javascript
-function doSomethingWithJson(data) {
-  console.log("The result of the expression " + data.exp + " is " + data.result)
+function doSomethingWithJson(json) {
+  console.log("The result of the expression " + json.exp + " is " + json.result)
 }
 ```
 
-The third method can apply so called _Transformers_. A Transformer allows the user to manipulate the DOM of the visualization. Transformer follows the [jQuery selector syntax](http://api.jquery.com/category/selectors).
+The second method can apply so called _Transformers_ on the visualisation. A Transformer allows the user to manipulate the DOM of the visualization. They follow the [jQuery selector syntax](http://api.jquery.com/category/selectors). Hower, we decided to lift the functionality of the jQuery selector syntax to the groovy scripting level.
 
 ```groovy
 // Select elements with ids "circle1" and "rectangle1" and set their fill and stroke attributes
@@ -101,3 +94,12 @@ def t = transform("#circle1,#rectangle1") {
 // Apply transformer to visualization
 bms.apply(t)
 ```
+
+The following method applies a JavaScript code snippet given as a string on the visualisation:
+
+```groovy
+// Apply any JavaScript to visualisation
+bms.apply('\$("#circle1").attr("fill","blue")')
+```
+The JavaScript code snippet selects an element with the id "circle1" and sets its "fill" attribute to the color "blue" (See [jQuery selector syntax](http://api.jquery.com/category/selectors)).
+
