@@ -61,7 +61,7 @@ def res1 = bms.eval("card({1,2,3,4})")
 
 assert res1.value == "4"
 ```
-This example evaluates the expression _card(call_buttons)_ in the current state of the model. The result is of the type _EvalResult_. _EvalResult_ is a special class created to make dealing with the evaluated result much easier.
+This example evaluates the expression _card(call_buttons)_ in the current state of the model. The result is of the type _EvalResult_. _EvalResult_ is a special class created to make dealing with the evaluated result much easier. The _value_ returns the result as a string.
 
 Every _EvalResult_ also has a method which allows for the easy translation of the String representation to be translated into a corresponding Java object (i.e. "1" will be translated as the integer object 1).
 
