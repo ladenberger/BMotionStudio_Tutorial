@@ -69,9 +69,9 @@ Here is an example:
 
 ```groovy
 def res1 = bms.eval("card({1,2,3,4})")
-def trans2 = res1.translate(tool.getStateSpace())
+def trans1 = res1.translate(tool.getStateSpace())
 
-assert trans2.value == 4
+assert trans1.value == 4
 
 def res2 = bms.eval("2 < 4")
 def trans2 = res2.translate(tool.getStateSpace())
