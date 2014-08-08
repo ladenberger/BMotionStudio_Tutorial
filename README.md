@@ -65,7 +65,7 @@ This example evaluates the expression _card(call_buttons)_ in the current state 
 
 The BMotion Studio API provides some methods to apply modifications on the visualisation. 
 
-The first method can apply so called _Transformers_ on the visualisation. A Transformer allows the user to manipulate the DOM of the visualization. They follow the [jQuery selector syntax](http://api.jquery.com/category/selectors). Hower, we decided to lift the functionality of the jQuery selector syntax to the groovy scripting level.
+The first method can apply so called _Transformers_ on the visualisation [1]. A Transformer allows the user to manipulate the DOM of the visualization. They follow the [jQuery selector syntax](http://api.jquery.com/category/selectors). Hower, we decided to lift the functionality of the jQuery selector syntax to the groovy scripting level.
 
 ```groovy
 // Select elements with ids "circle1" and "rectangle1" and set their fill and stroke attributes
@@ -101,5 +101,8 @@ The last method applies a JavaScript code snippet given as a string on the visua
 // Apply any JavaScript to visualisation
 bms.apply('\$("#circle1").attr("fill","blue")')
 ```
-The JavaScript code snippet selects an element with the id "circle1" and sets its "fill" attribute to the color "blue" (See [jQuery selector syntax](http://api.jquery.com/category/selectors)).
+The JavaScript code snippet selects an element with the id "circle1" and sets its "fill" attribute to the color "blue" (See [2]).
+
+References:
+[1] [Data Visualization in ProB, Joy Clark, 2013 (Bachelor Thesis)](http://www.stups.hhu.de/w/Data_Visualization_in_ProB)
 
