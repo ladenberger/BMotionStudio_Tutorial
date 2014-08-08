@@ -29,7 +29,11 @@ You can use the default template (located in the template folder) as a starting 
 
 ## Build-in Graphical Editor
 
-tbd
+BMotion Studio provides a graphical editor with different views and wizards that supports users in creating domain specific visualisations for formal models. 
+
+The editor consists of a set of tools for creating SVG widgets (i.e. visual elements as shapes and images), a canvas holding the actual visual elements, a view for editing observers, and another view for manipulating the attributes of the currently selected element in the canvas. The corresponding JSON file which contains the observers is created by the editor automatically.
+
+Open the template.html file with BMotion Studio and start the graphical editor by clicking on the "Start Editor" button located at the top right corner.
 
 ## Scripting
 
