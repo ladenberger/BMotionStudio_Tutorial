@@ -65,7 +65,19 @@ This example evaluates the expression _card(call_buttons)_ in the current state 
 
 The BMotion Studio API provides some methods to apply modifications on the visualisation. 
 
-The following method calls a defined JavaScript method which is defined in your template passing any JSON object:
+The first method can apply so called _Transformers_ on the visualisation. A Transformer allows the user to manipulate the DOM of the visualization. They follow the [jQuery selector syntax](http://api.jquery.com/category/selectors). Hower, we decided to lift the functionality of the jQuery selector syntax to the groovy scripting level.
+
+```groovy
+// Select elements with ids "circle1" and "rectangle1" and set their fill and stroke attributes
+def t = transform("#circle1,#rectangle1") {
+  set "fill", "red"
+  set "stroke", "gray"
+}
+// Apply transformer to visualization
+bms.apply(t)
+```
+
+The next method calls a defined JavaScript method which is defined in your template passing any JSON object:
 
 ```groovy
 // Create a JSON object
@@ -83,19 +95,7 @@ function doSomethingWithJson(json) {
 }
 ```
 
-The second method can apply so called _Transformers_ on the visualisation. A Transformer allows the user to manipulate the DOM of the visualization. They follow the [jQuery selector syntax](http://api.jquery.com/category/selectors). Hower, we decided to lift the functionality of the jQuery selector syntax to the groovy scripting level.
-
-```groovy
-// Select elements with ids "circle1" and "rectangle1" and set their fill and stroke attributes
-def t = transform("#circle1,#rectangle1") {
-  set "fill", "red"
-  set "stroke", "gray"
-}
-// Apply transformer to visualization
-bms.apply(t)
-```
-
-The following method applies a JavaScript code snippet given as a string on the visualisation:
+The last method applies a JavaScript code snippet given as a string on the visualisation:
 
 ```groovy
 // Apply any JavaScript to visualisation
