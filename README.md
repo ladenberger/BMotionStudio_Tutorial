@@ -142,7 +142,7 @@ The JavaScript code snippet selects an element with the id "circle1" and sets it
 
 # FAQ
 
-## How I can playback events automatically?
+## How can I playback events automatically?
 
 Add the following code to your groovy scripting file:
 
