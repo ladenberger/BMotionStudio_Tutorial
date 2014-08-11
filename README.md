@@ -119,7 +119,7 @@ The next method calls a defined JavaScript method which is defined in your templ
 ```groovy
 // Create a JSON object
 def res = bms.eval("card(call_buttons)")
-def json = [result : rest.value, exp : "card(call_buttons)"]
+def json = [result : res.value, exp : "card(call_buttons)"]
 // Call JavaScript function doSomethingWithJson with the created JSON object
 bms.apply("doSomethingWithJson", json)
 ```
