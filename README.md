@@ -140,6 +140,54 @@ bms.apply('\$("#circle1").attr("fill","blue")')
 ```
 The JavaScript code snippet selects an element with the id "circle1" and sets its "fill" attribute to the color "blue" (See [jQuery selector syntax](http://api.jquery.com/category/selectors) for more details).
 
+# FAQ
+
+## How I can playback events automatically?
+
+Add the following code to your groovy scripting file:
+
+```groovy
+
+// Define the squence of events which should be executed
+def trace1 = [
+"evt1",
+"evt2",
+"evt3"
+]
+
+// Some helper functions
+def getOp(sId,name,pred) {
+	try {
+	  def ops = tool.getStateSpace().opFromPredicate(sId,name,pred,1)
+	  ops[0]
+	} catch (Exception e) {
+	  null
+	}
+}
+
+def setTrace(t1, t2) {
+	animations.replaceTrace(t1,t2);
+	return t2;
+}
+
+// Start a new thread that executes the defined events in a row
+Thread.start {
+
+	trace1.each {
+		def ot = t
+		def op
+		op = getOp(t.getCurrentState(),it,"TRUE=TRUE")
+		while(op == null) {
+			op = getOp(t.getCurrentState(),it,"TRUE=TRUE")
+    		}
+      		t = t.add(op.getId())
+      		setTrace(ot,t);
+		sleep 1000
+	}
+
+}
+```
+
 ### References
 [1] [Data Visualization in ProB, Joy Clark, 2013 (Bachelor Thesis)](http://www.stups.hhu.de/w/Data_Visualization_in_ProB)
 
