@@ -1,5 +1,7 @@
 # BMotionStudio 2 Tutorial
 
+Please note: This repository is obsolete! Please consult the BMotion Studio for ProB website for an up to date tutorial: http://stups.hhu.de/ProB/w/BMotion_Studio
+
 ## BMotion Studio 2
 
 BMotion Studio 2 is a visual editor for creating domain specific visualisations of formal models with support for Event-B, Classical-B and CSP. The tool is not officially released yet, but the source code is available [here](https://github.com/bendisposto/prob2).
